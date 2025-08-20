@@ -1,0 +1,12 @@
+---
+authors:
+  ernail:
+    name: "Eric Nagel"
+    description: |-
+      Eric is a DevOps and Cloud Engineer who prioritizes quality and maintainability.
+      He specializes in Kubernetes, focusing on developing, deploying, and managing scalable
+      infrastructure and cloud-native solutions.
+    avatar: "https://avatars.githubusercontent.com/u/21304633?v=4"
+    slug: "ernail"
+    url: "blog.nailforge.dev"
+...
