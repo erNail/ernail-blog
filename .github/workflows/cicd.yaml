@@ -1,0 +1,50 @@
+---
+name: "CI/CD"
+
+"on":
+  push: {}
+
+jobs:
+  lint-pre-commit-job:
+    runs-on: "ubuntu-24.04"
+    steps:
+      - name: "Check out repository"
+        uses: "actions/checkout@v4.2.2"
+      - name: "Setup python"
+        uses: "actions/setup-python@v5.5.0"
+      - name: "Run pre-commit"
+        uses: "pre-commit/action@v3.0.1"
+
+  build-pages-job:
+    runs-on: "ubuntu-24.04"
+    steps:
+      - name: "Check out repository"
+        uses: "actions/checkout@v4.2.2"
+      - name: "Setup python"
+        uses: "actions/setup-python@v5.5.0"
+      - name: "Install dependencies"
+        run: "pip install mkdocs-material"
+      - name: "Build blog"
+        run: "mkdocs build --strict"
+      - name: "Upload pages artifact"
+        uses: "actions/upload-pages-artifact@v4.0.0"
+        with:
+          path: "site"
+
+  deploy-pages-job:
+    runs-on: "ubuntu-24.04"
+    if: "github.ref == 'refs/heads/main'"
+    needs: "build-pages-job"
+    permissions:
+      pages: "write"
+      id-token: "write"
+    environment:
+      name: "github-pages"
+      url: "${{steps.deployment.outputs.page_url}}"
+    steps:
+      - name: "Deploy blog"
+        id: "deployment"
+        uses: "actions/deploy-pages@v4.0.5"
+
+
+...
