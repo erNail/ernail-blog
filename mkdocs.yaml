@@ -35,4 +35,5 @@ plugins:
       blog_toc: true
       post_readtime: true
       archive: false
+      blog_dir: "."
 ...
