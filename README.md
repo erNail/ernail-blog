@@ -1,6 +1,6 @@
 # ernail-blog
 
-My personal [blog](blog.nailforge.dev/blog) written completely in Markdown
+My personal [blog](https://blog.nailforge.dev/blog) written completely in Markdown
 
 ## Contributing
 
