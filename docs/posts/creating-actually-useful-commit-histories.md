@@ -162,6 +162,7 @@ git checkout feature
 git commit -m "ci: Add CI/CD pipeline for linting, testing, building and deploying"
 git commit -m "feat: Add endpoint for fetching the current temperature in a city"
 git checkout main
+git pull
 git merge feature
 ```
 
@@ -192,13 +193,8 @@ With `rebase`, we use the following commands:
 git checkout feature
 git commit -m "ci: Add CI/CD pipeline for linting, testing, building and deploying"
 git commit -m "feat: Add endpoint for fetching the current temperature in a city"
-
-# Make sure our commits are on top of the latest commits from main
-git rebase main
-
-# Rebase our commits on top of main
-git checkout main
-git rebase feature
+git fetch origin
+git rebase origin/main
 ```
 
 Which produces this result:
@@ -424,7 +420,7 @@ config:
 ---
 gitGraph TB:
   commit id: "Initial commit"
-  branch feat
+  branch feature
   commit id: "ci: Add CI/CD pipeline for linting, testing, building and deploying"
   commit id: "feat: Add endpoint for fetching the current temperature in a city"
 ```
